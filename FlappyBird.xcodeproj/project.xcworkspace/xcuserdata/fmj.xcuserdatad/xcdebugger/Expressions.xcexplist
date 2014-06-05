@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "FlappyBird.FBPipe.init (FlappyBird.FBPipe.Type)() -&gt; FlappyBird.FBPipe:FBPipe.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "pipeTextureDown">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "FlappyBird.FBGrand.init (FlappyBird.FBGrand.Type)(image : Swift.String, timer : Swift.Double, physicsBody : Swift.Bool) -&gt; FlappyBird.FBGrand:FBGrand.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.size">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
