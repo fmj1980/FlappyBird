@@ -9,10 +9,15 @@
 import UIKit
 import SpriteKit
 
-var sky_z_index:CGFloat =  1.0
-var pipe_z_index:CGFloat = 3.0
-var ground_z_index:CGFloat = 5.0
-var bird_z_index:CGFloat = 7.0
+var sky_z_index:CGFloat     =  1.0
+var pipe_z_index:CGFloat    = 3.0
+var ground_z_index:CGFloat  = 5.0
+var bird_z_index:CGFloat    = 7.0
+
+var bird_mask:UInt32   = 1
+var grand_mask:UInt32  = 1<<1
+var pipe_mask:UInt32   = 1<<2
+
 
 extension SKNode {
     class func unarchiveFromFile(file:NSString) -> SKNode? {
@@ -51,9 +56,9 @@ class FlappyBirdScene: SKScene ,SKPhysicsContactDelegate{
     {
         //测试closure
         var blockAction = SKAction.runBlock(
-            {[]() in
+            {
                 var pipe = FBPipe(size:self.frame.size,
-                {() in
+                {
                     self.fbDelegate.increaseScore()
                 });
                 pipe.zPosition = pipe_z_index

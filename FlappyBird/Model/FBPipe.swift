@@ -9,7 +9,7 @@
 import UIKit
 import SpriteKit
 
-var pipeGrap:CGFloat = 100
+var pipeGrap:CGFloat = 150
 
 class FBPipe: SKSpriteNode {
     @lazy var pipeTextureUp = SKTexture(imageNamed: "PipeUp")
@@ -30,7 +30,7 @@ class FBPipe: SKSpriteNode {
         pipeDown.position = CGPointMake(0.0, CGFloat(randomHight) + pipeDown.size.height + CGFloat(pipeGrap))
         pipeDown.physicsBody = SKPhysicsBody(rectangleOfSize: pipeDown.size)
         pipeDown.physicsBody.dynamic = false
-        pipeDown.physicsBody.categoryBitMask  = 4
+        pipeDown.physicsBody.categoryBitMask  = pipe_mask
         self.addChild(pipeDown)
         
         var pipeUp = SKSpriteNode(texture: self.pipeTextureUp)
@@ -38,7 +38,7 @@ class FBPipe: SKSpriteNode {
         pipeUp.position = CGPointMake(0.0, CGFloat(randomHight))
         pipeUp.physicsBody = SKPhysicsBody(rectangleOfSize: pipeUp.size)
         pipeUp.physicsBody.dynamic = false
-        pipeUp.physicsBody.categoryBitMask  = 4
+        pipeUp.physicsBody.categoryBitMask  = pipe_mask
         self.addChild(pipeUp)
         
         

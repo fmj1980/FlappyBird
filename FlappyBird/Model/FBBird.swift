@@ -11,33 +11,24 @@ import SpriteKit
 
 class FBBird: SKSpriteNode {
    init(){
-    var birdTexture1 = SKTexture(imageNamed: "bird-01")
-    birdTexture1.filteringMode = SKTextureFilteringMode.Nearest
-    var birdTexture2 = SKTexture(imageNamed: "bird-02")
-    birdTexture2.filteringMode = SKTextureFilteringMode.Nearest
-    var birdTexture3 = SKTexture(imageNamed: "bird-03")
-    birdTexture3.filteringMode = SKTextureFilteringMode.Nearest
-    var birdTexture4 = SKTexture(imageNamed: "bird-04")
-    birdTexture4.filteringMode = SKTextureFilteringMode.Nearest
+    var textures:Array = [];
+    for index in 1...4{
+        var texture = SKTexture(imageNamed: "bird-0\(index)")
+        texture.filteringMode = SKTextureFilteringMode.Nearest
+        textures.append(texture)
+    }
+    super.init(texture: textures[0] as SKTexture);
     
-    super.init(texture: birdTexture1);
-    
-    var size = self.size;
-    
-    var anim = SKAction.animateWithTextures([birdTexture1, birdTexture2,birdTexture3,birdTexture4], timePerFrame: 0.1)
+    var anim = SKAction.animateWithTextures(textures, timePerFrame: 0.1)
     var flap = SKAction.repeatActionForever(anim)
-
-    self.setScale(1.0)
     self.runAction(flap)
-    
     
     self.physicsBody = SKPhysicsBody(circleOfRadius: self.size.height / 2.0)
     self.physicsBody.dynamic = true
-    self.physicsBody.allowsRotation = false
-    
     //暂时不知道枚举怎么处理。。。
-    self.physicsBody.categoryBitMask  = 1
-    self.physicsBody.contactTestBitMask = 2|4;
+    self.physicsBody.categoryBitMask  = bird_mask
+    self.physicsBody.contactTestBitMask = pipe_mask;
+    self.physicsBody.collisionBitMask = grand_mask;
     }
     
     init(texture: SKTexture!, color: UIColor!, size: CGSize)

@@ -38,7 +38,7 @@ class FBGrand: SKSpriteNode {
             //还没有搞太明白这个坐标系，真晕
             self.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(self.frame.size.width, self.frame.size.height * 4.0))
             self.physicsBody.dynamic = false
-            self.physicsBody.categoryBitMask  = 2
+            self.physicsBody.categoryBitMask  = grand_mask
         }
     }
     
