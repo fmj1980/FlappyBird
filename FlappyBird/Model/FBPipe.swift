@@ -9,7 +9,7 @@
 import UIKit
 import SpriteKit
 
-var pipeGrap:CGFloat = 150
+var pipeGrap:CGFloat = 110
 
 class FBPipe: SKSpriteNode {
     @lazy var pipeTextureUp = SKTexture(imageNamed: "PipeUp")

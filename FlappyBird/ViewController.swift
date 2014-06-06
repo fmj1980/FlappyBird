@@ -39,7 +39,6 @@ class ViewController: UIViewController, scenceDelegate{
         scene = FlappyBirdScene(size:CGSizeMake(self.view.bounds.size.width,self.view.bounds.size.height));
         scene.fbDelegate = self;
         scene.scaleMode = .AspectFill
-
         (self.view as SKView).presentScene(scene);
     }
     
@@ -47,7 +46,6 @@ class ViewController: UIViewController, scenceDelegate{
     {
         score = score+1;
         lblScore.text = "\(score)"
-        
     }
 
     func gameOver()

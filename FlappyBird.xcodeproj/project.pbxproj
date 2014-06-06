@@ -74,6 +74,7 @@
 		A09BB9C41941924B006AA339 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				A09BB9C119415C97006AA339 /* spark.png */,
 				A09BB9C019415C97006AA339 /* rainPatical.sks */,
 			);
 			name = resource;
@@ -153,7 +154,6 @@
 				A0BE296B19400C7200E8A577 /* FBBird.swift */,
 				A0F96E0C19402E8400C27DB0 /* FBGrand.swift */,
 				A0F96E0E194049C100C27DB0 /* FBPipe.swift */,
-				A09BB9C119415C97006AA339 /* spark.png */,
 			);
 			name = model;
 			sourceTree = "<group>";
