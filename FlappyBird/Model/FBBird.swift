@@ -27,8 +27,8 @@ class FBBird: SKSpriteNode {
     self.physicsBody.dynamic = true
     //暂时不知道枚举怎么处理。。。
     self.physicsBody.categoryBitMask  = bird_mask
-    self.physicsBody.contactTestBitMask = pipe_mask;
-    self.physicsBody.collisionBitMask = grand_mask;
+    self.physicsBody.contactTestBitMask = pipe_mask | grand_mask;
+    self.physicsBody.collisionBitMask = grand_mask | pipe_mask;
     }
     
     init(texture: SKTexture!, color: UIColor!, size: CGSize)

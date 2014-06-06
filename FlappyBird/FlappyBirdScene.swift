@@ -28,8 +28,8 @@ extension SKNode {
 
 protocol scenceDelegate {
     func increaseScore()
-    func gameOver();
-    func newGame();
+    func gameOver()
+    func newGame()
 }
 
 class FlappyBirdScene: SKScene ,SKPhysicsContactDelegate{
@@ -37,7 +37,6 @@ class FlappyBirdScene: SKScene ,SKPhysicsContactDelegate{
     var grand:FBGrand!
     var sky:FBGrand!
     var fbDelegate:scenceDelegate!
-    var gameOvered:Bool = false
     
     init(size:CGSize)
     {
@@ -100,12 +99,6 @@ class FlappyBirdScene: SKScene ,SKPhysicsContactDelegate{
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         /* Called when a touch begins */
-        if gameOvered
-        {
-            gameOvered = false;
-            self.fbDelegate.newGame();
-            return;
-        }
         for touch: AnyObject in touches {
             let location = touch.locationInNode(self)
             

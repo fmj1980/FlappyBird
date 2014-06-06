@@ -18,7 +18,12 @@ class ViewController: UIViewController, scenceDelegate{
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        newGame();
+        if let view = self.view as? SKView{
+            view.showsFPS = true;
+            view.showsNodeCount = true;
+            view.ignoresSiblingOrder = true
+            newGame()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,25 +31,16 @@ class ViewController: UIViewController, scenceDelegate{
         // Dispose of any resources that can be recreated.
         
     }
-
+    
     func newGame()
     {
-        //怎么开始一局新的游戏？。。。
         lblScore.text = "0"
-        if(scene){
-            scene.removeFromParent();
-        }
-        
         score = 0;
         scene = FlappyBirdScene(size:CGSizeMake(self.view.bounds.size.width,self.view.bounds.size.height));
         scene.fbDelegate = self;
         scene.scaleMode = .AspectFill
-        if let view = self.view as? SKView{
-            view.showsFPS = true;
-            view.showsNodeCount = true;
-            view.ignoresSiblingOrder = true
-            view.presentScene(scene);
-        }
+
+        (self.view as SKView).presentScene(scene);
     }
     
     func increaseScore()
@@ -56,9 +52,9 @@ class ViewController: UIViewController, scenceDelegate{
 
     func gameOver()
     {
-        scene.view.paused = true;
-        scene.gameOvered = true;
-        lblScore.text = "GAME OVER"
+        var gameOverScene = GameOverScene(size:self.view.bounds.size,delegate:self);
+        gameOverScene.fbDelegate = self;
+        (self.view as SKView).presentScene(gameOverScene)
     }
 }
 
