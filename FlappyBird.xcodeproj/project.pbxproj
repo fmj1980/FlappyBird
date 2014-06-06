@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A09BB9C219415C97006AA339 /* rainPatical.sks in Resources */ = {isa = PBXBuildFile; fileRef = A09BB9C019415C97006AA339 /* rainPatical.sks */; };
+		A09BB9C319415C97006AA339 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = A09BB9C119415C97006AA339 /* spark.png */; };
 		A0BE29481940087700E8A577 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BE29471940087700E8A577 /* AppDelegate.swift */; };
 		A0BE294A1940087700E8A577 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BE29491940087700E8A577 /* ViewController.swift */; };
 		A0BE294D1940087700E8A577 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0BE294B1940087700E8A577 /* Main.storyboard */; };
@@ -30,6 +32,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A09BB9C019415C97006AA339 /* rainPatical.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = rainPatical.sks; sourceTree = "<group>"; };
+		A09BB9C119415C97006AA339 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		A0BE29421940087700E8A577 /* FlappyBird.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlappyBird.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0BE29461940087700E8A577 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0BE29471940087700E8A577 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +69,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A09BB9C41941924B006AA339 /* resource */ = {
+			isa = PBXGroup;
+			children = (
+				A09BB9C019415C97006AA339 /* rainPatical.sks */,
+			);
+			name = resource;
+			sourceTree = "<group>";
+		};
 		A0BE29391940087700E8A577 = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +99,7 @@
 		A0BE29441940087700E8A577 /* FlappyBird */ = {
 			isa = PBXGroup;
 			children = (
+				A09BB9C41941924B006AA339 /* resource */,
 				A0BE296A19400BFB00E8A577 /* Model */,
 				A0BE296819400A2C00E8A577 /* FlappyBirdScene.swift */,
 				A0BE29491940087700E8A577 /* ViewController.swift */,
@@ -129,6 +142,7 @@
 				A0BE296B19400C7200E8A577 /* FBBird.swift */,
 				A0F96E0C19402E8400C27DB0 /* FBGrand.swift */,
 				A0F96E0E194049C100C27DB0 /* FBPipe.swift */,
+				A09BB9C119415C97006AA339 /* spark.png */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -214,6 +228,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0BE294D1940087700E8A577 /* Main.storyboard in Resources */,
+				A09BB9C319415C97006AA339 /* spark.png in Resources */,
+				A09BB9C219415C97006AA339 /* rainPatical.sks in Resources */,
 				A0BE294F1940087700E8A577 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

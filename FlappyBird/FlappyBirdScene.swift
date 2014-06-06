@@ -14,6 +14,12 @@ var pipe_z_index:CGFloat = 3.0
 var ground_z_index:CGFloat = 5.0
 var bird_z_index:CGFloat = 7.0
 
+extension SKNode {
+    class func unarchiveFromFile(file:NSString) -> SKNode? {
+        let path = NSBundle.mainBundle().pathForResource(file, ofType: "sks")
+        return (NSKeyedUnarchiver.unarchiveObjectWithFile(path) as SKNode!);
+    }
+}
 
 protocol scenceDelegate {
     func increaseScore()
@@ -43,7 +49,7 @@ class FlappyBirdScene: SKScene ,SKPhysicsContactDelegate{
     
     func showPipe()
     {
-        //此处仅仅做闭包的测试
+        //测试closure
         var blockAction = SKAction.runBlock(
             {[]() in
                 var pipe = FBPipe(size:self.frame.size,
@@ -68,19 +74,23 @@ class FlappyBirdScene: SKScene ,SKPhysicsContactDelegate{
     
     func showBackgound()
     {
-        var skyColor = SKColor(red: 81.0/255.0, green: 192.0/255.0, blue: 201.0/255.0, alpha: 1.0)
-        self.backgroundColor = skyColor
-        
+        //背景色
+        self.backgroundColor = SKColor(red: 81.0/255.0, green: 192.0/255.0, blue: 201.0/255.0, alpha: 1.0)
+        //草地
         grand =  FBGrand(image:"land",timer:0.02,physicsBody:true);
         grand.position = CGPointMake(0,-grand.size.height)
         grand.zPosition = ground_z_index
-        
         self.addChild(grand);
-        
+        //背景图
         sky = FBGrand(image:"sky",timer:0.1,physicsBody:false)
         sky.position = CGPointMake(0,grand.size.height)
         sky.zPosition = sky_z_index
         self.addChild(sky);
+        //雨
+        var rain = SKNode.unarchiveFromFile("rainPatical") as SKEmitterNode
+        rain.position = CGPointMake( 200, self.frame.height)
+        rain.zPosition = 2.0
+        self.addChild(rain)
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
