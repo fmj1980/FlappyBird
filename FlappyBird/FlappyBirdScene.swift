@@ -26,17 +26,17 @@ extension SKNode {
     }
 }
 
-protocol scenceDelegate {
+@objc protocol scenceDelegate {
     func increaseScore()
     func gameOver()
     func newGame()
 }
 
 class FlappyBirdScene: SKScene ,SKPhysicsContactDelegate{
-    var bird = FBBird()
+    var bird:FBBird = FBBird()
     var grand:FBGrand!
     var sky:FBGrand!
-    var fbDelegate:scenceDelegate!
+    var fbDelegate:scenceDelegate?
     
     init(size:CGSize)
     {
@@ -53,16 +53,18 @@ class FlappyBirdScene: SKScene ,SKPhysicsContactDelegate{
     
     func showPipe()
     {
-        //测试closure
-        var blockAction = SKAction.runBlock(
-            {
-                var pipe = FBPipe(size:self.frame.size,
-                {
-                    self.fbDelegate.increaseScore()
-                });
+        //test code
+        var blockAction = SKAction.runBlock{
+                [weak self] in var pipe = FBPipe(size:self!.frame.size){
+                    [weak self] in if let delegate = self!.fbDelegate as? scenceDelegate{
+                        if self!.fbDelegate is scenceDelegate{
+                            delegate.increaseScore()
+                        }
+                    }
+                }
                 pipe.zPosition = pipe_z_index
-                self.addChild(pipe);
-            })
+                self!.addChild(pipe);
+            }
         var delayAction = SKAction.waitForDuration(NSTimeInterval(1.8))
         var sequeAction = SKAction.sequence([blockAction, delayAction])
         var action = SKAction.repeatActionForever(sequeAction)
@@ -121,13 +123,17 @@ class FlappyBirdScene: SKScene ,SKPhysicsContactDelegate{
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
         //println(currentTime)
-        bird.zRotation = self.clamp( -1, max: 0.5, value: bird.physicsBody.velocity.dy * ( bird.physicsBody.velocity.dy < 0 ? 0.003 : 0.001 ) );
+        bird.zRotation = self.clamp( -1, max: 0.5, value: bird.physicsBody.velocity.dy * ( bird.physicsBody.velocity.dy < 0 ? 0.002 : 0.001 ) );
     }
     
     func didBeginContact(contact: SKPhysicsContact!)
     {
-        self.fbDelegate.gameOver();
+        self.fbDelegate?.gameOver();
         
+    }
+    
+    deinit{
+        println("scene destroy")
     }
     
 }

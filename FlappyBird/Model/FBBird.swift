@@ -10,13 +10,10 @@ import UIKit
 import SpriteKit
 
 class FBBird: SKSpriteNode {
-   init(){
-    var textures:Array = [];
-    for index in 1...4{
-        var texture = SKTexture(imageNamed: "bird-0\(index)")
-        texture.filteringMode = SKTextureFilteringMode.Nearest
-        textures.append(texture)
-    }
+    init(){
+    //cool
+    var textures = Array(1...4).map({ SKTexture(imageNamed:"bird-0\($0)") })
+    
     super.init(texture: textures[0] as SKTexture);
     
     var anim = SKAction.animateWithTextures(textures, timePerFrame: 0.1)
@@ -34,5 +31,8 @@ class FBBird: SKSpriteNode {
     init(texture: SKTexture!, color: UIColor!, size: CGSize)
     {
         super.init(texture:texture,color:color,size:size)
+    }
+    deinit{
+        println("bird destroy")
     }
 }

@@ -10,15 +10,19 @@ import UIKit
 import SpriteKit
 
 var pipeGrap:CGFloat = 110
+var upTexture = SKTexture(imageNamed: "PipeUp")
 
 class FBPipe: SKSpriteNode {
-    @lazy var pipeTextureUp = SKTexture(imageNamed: "PipeUp")
+    class var pipeTextureUp:SKTexture {return upTexture}
     @lazy var pipeTextureDown = SKTexture(imageNamed: "PipeDown")
+    class var obj:Int { return 1}
     init(size:CGSize,block:() -> Void){
+        var text = FBPipe.pipeTextureUp
+        var test1 = FBPipe.pipeTextureUp
         super.init(color:UIColor.clearColor(),size:size);
         self.position = CGPoint(x: self.frame.size.width+pipeTextureDown.size().width*2, y:0)
             
-        pipeTextureUp.filteringMode = SKTextureFilteringMode.Nearest
+        FBPipe.pipeTextureUp.filteringMode = SKTextureFilteringMode.Nearest
         pipeTextureDown.filteringMode = SKTextureFilteringMode.Nearest
         var frameHeight = self.frame.size.height;
         var height = UInt32( self.frame.size.height / 4 )
@@ -33,7 +37,7 @@ class FBPipe: SKSpriteNode {
         pipeDown.physicsBody.categoryBitMask  = pipe_mask
         self.addChild(pipeDown)
         
-        var pipeUp = SKSpriteNode(texture: self.pipeTextureUp)
+        var pipeUp = SKSpriteNode(texture: FBPipe.pipeTextureUp)
         pipeUp.setScale(2.0)
         pipeUp.position = CGPointMake(0.0, CGFloat(randomHight))
         pipeUp.physicsBody = SKPhysicsBody(rectangleOfSize: pipeUp.size)
@@ -42,7 +46,7 @@ class FBPipe: SKSpriteNode {
         self.addChild(pipeUp)
         
         
-        var distanceToMove = CGFloat(self.frame.size.width + 4.0 * pipeTextureUp.size().width);
+        var distanceToMove = CGFloat(self.frame.size.width + 4.0 * FBPipe.pipeTextureUp.size().width);
         var movePipes = SKAction.moveByX(-distanceToMove, y:0.0, duration:NSTimeInterval(0.01 * distanceToMove));
         var removePipes = SKAction.removeFromParent();
         var blockAction = SKAction.runBlock(block);
@@ -53,5 +57,8 @@ class FBPipe: SKSpriteNode {
     init(texture: SKTexture!, color: UIColor!, size: CGSize)
     {
         super.init(texture:texture,color:color,size:size)
+    }
+    deinit{
+        println("pipe destroy")
     }
 }
